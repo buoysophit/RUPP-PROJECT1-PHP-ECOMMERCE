@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 04, 2025 at 04:01 AM
+-- Generation Time: Mar 12, 2025 at 05:22 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ecom1`
+-- Database: `ecomp1`
 --
 
 -- --------------------------------------------------------
@@ -66,6 +66,31 @@ INSERT INTO `cart` (`id`, `user_id`, `pid`, `name`, `price`, `quantity`, `image`
 (11, 2, 14, 'Petit CD Necklace', 67, 1, '2.webp'),
 (12, 2, 6, 'Black Cannage Lambskin', 60, 1, 'b4.3.webp'),
 (13, 2, 13, 'Small Dior Night Code Hoop Earrings', 20, 1, '1.webp');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `menu_items`
+--
+
+CREATE TABLE `menu_items` (
+  `id` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `link` varchar(500) NOT NULL,
+  `order` int(11) NOT NULL,
+  `enable` char(1) NOT NULL DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `menu_items`
+--
+
+INSERT INTO `menu_items` (`id`, `name`, `link`, `order`, `enable`) VALUES
+(1, 'Home', 'index.php', 1, '1'),
+(2, 'Shop', 'shop.php', 2, '1'),
+(3, 'Contact', 'contact.php', 3, '1'),
+(4, 'About', 'about.php', 4, '1'),
+(5, 'Orders', 'orders.php', 5, '1');
 
 -- --------------------------------------------------------
 
@@ -150,6 +175,25 @@ INSERT INTO `products` (`id`, `name`, `details`, `price`, `image_01`, `image_02`
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `site_settings`
+--
+
+CREATE TABLE `site_settings` (
+  `id` int(11) NOT NULL,
+  `setting_key` varchar(100) NOT NULL,
+  `setting_value` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `site_settings`
+--
+
+INSERT INTO `site_settings` (`id`, `setting_key`, `setting_value`) VALUES
+(1, 'site_logo', 'default_logo.png');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `slideshows`
 --
 
@@ -227,6 +271,12 @@ ALTER TABLE `cart`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `menu_items`
+--
+ALTER TABLE `menu_items`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `messages`
 --
 ALTER TABLE `messages`
@@ -242,6 +292,12 @@ ALTER TABLE `orders`
 -- Indexes for table `products`
 --
 ALTER TABLE `products`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `site_settings`
+--
+ALTER TABLE `site_settings`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -279,6 +335,12 @@ ALTER TABLE `cart`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT for table `menu_items`
+--
+ALTER TABLE `menu_items`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
@@ -295,6 +357,12 @@ ALTER TABLE `orders`
 --
 ALTER TABLE `products`
   MODIFY `id` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+
+--
+-- AUTO_INCREMENT for table `site_settings`
+--
+ALTER TABLE `site_settings`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `slideshows`

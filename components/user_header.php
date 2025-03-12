@@ -13,16 +13,24 @@ if(isset($message)){
 
 <header class="header">
 
-    <section class="flex">
-
-        <a href="index.php" class="logo">NITA-STORE<span></span></a>
-
+<section class="flex">
+        <a href="index.php" class="logo">
+            <?php
+            $select_logo = $conn->prepare("SELECT `setting_value` FROM `site_settings` WHERE `setting_key` = 'site_logo'");
+            $select_logo->execute();
+            $fetch_logo = $select_logo->fetch(PDO::FETCH_ASSOC);
+            $logo_path = $fetch_logo ? 'uploads/logos/' . $fetch_logo['setting_value'] : 'uploads/logos/default_logo.png';
+            ?>
+            <img src="<?= $logo_path; ?>" alt="Site Logo" style="max-height: 50px;">
+        </a>
         <nav class="navbar">
-            <a href="index.php">Home</a>
-            <a href="shop.php">Shop</a>
-            <a href="contact.php">Contact</a>
-            <a href="about.php">About</a>
-            <a href="orders.php">Orders</a>
+            <?php
+            $select_menu_items = $conn->prepare("SELECT * FROM `menu_items` WHERE `enable` = '1' ORDER BY `order` ASC");
+            $select_menu_items->execute();
+            while ($fetch_menu_item = $select_menu_items->fetch(PDO::FETCH_ASSOC)) {
+                echo '<a href="' . htmlspecialchars($fetch_menu_item['link']) . '">' . htmlspecialchars($fetch_menu_item['name']) . '</a>';
+            }
+            ?>
         </nav>
 
         <div class="icons">

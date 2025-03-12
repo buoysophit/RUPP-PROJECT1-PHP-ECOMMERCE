@@ -102,6 +102,28 @@ if (!$fetch_profile) {
                                 </div>
                             </div>
                         </div>
+
+                        <!-- Menu Settings Card -->
+<div class="col-xl-4 col-md-6 mb-4">
+    <div class="card border-left-info shadow h-100 py-2">
+        <div class="card-body">
+            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Menu Settings</div>
+            <p class="mb-4">Manage the menu items for the user header.</p>
+            <a href="menu_settings.php" class="btn btn-info btn-sm">Manage Menu</a>
+        </div>
+    </div>
+</div>
+
+<!-- Logo Settings Card -->
+<div class="col-xl-4 col-md-6 mb-4">
+    <div class="card border-left-dark shadow h-100 py-2">
+        <div class="card-body">
+            <div class="text-xs font-weight-bold text-dark text-uppercase mb-1">Logo Settings</div>
+            <p class="mb-4">Change the site logo.</p>
+            <a href="logo_settings.php" class="btn btn-dark btn-sm">Manage Logo</a>
+        </div>
+    </div>
+</div>
                     </div>
                 </section>
             </div>
