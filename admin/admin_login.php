@@ -60,7 +60,7 @@ if(isset($_POST['submit'])){
         }
 
         .card-header {
-            background: #4e73df; /* Purple header as in the image */
+            background: #E53888; /* Purple header as in the image */
             color: white;
             text-align: center;
             padding: 20px;
@@ -90,7 +90,7 @@ if(isset($_POST['submit'])){
         }
 
         .form-control:focus {
-            border-color: #4e73df;
+            border-color:#E53888;
             outline: none;
             box-shadow: 0 0 5px rgba(106, 27, 154, 0.3);
         }
@@ -104,7 +104,7 @@ if(isset($_POST['submit'])){
         }
 
         .btn-login {
-            background: #4e73df; /* Purple button matching header */
+            background:#E53888; /* Purple button matching header */
             color: white;
             border: none;
             border-radius: 25px; /* Rounded button as in image */
@@ -117,7 +117,7 @@ if(isset($_POST['submit'])){
         }
 
         .btn-login:hover {
-            background: #4e73df; /* Darker purple on hover */
+            background:#E53888 ; /* Darker purple on hover */
         }
 
         .message {

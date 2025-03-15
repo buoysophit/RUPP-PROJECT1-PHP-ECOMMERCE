@@ -38,12 +38,14 @@ if(isset($_SESSION['user_id'])){
    <div class="row">
 
       <div class="image">
-         <img src="images/about-img.svg" alt="">
+         <img src="images/pic_about.png" alt="">
       </div>
 
       <div class="content">
          <h3>why choose us?</h3>
-         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam veritatis minus et similique doloribus? Harum molestias tenetur eaque illum quas? Obcaecati nulla in itaque modi magnam ipsa molestiae ullam consequuntur.</p>
+         <p>✔ Premium Quality – We handpick our products to ensure durability and style.<br>
+            ✔ Affordable Prices – Get the best deals without compromising on quality.<br>
+            ✔ Customer Satisfaction – Your happiness is our priority. We offer secure payment options, fast shipping, and friendly customer support.</p>
          <a href="contact.php" class="btn">contact us</a>
       </div>
 
