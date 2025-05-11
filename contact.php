@@ -72,18 +72,6 @@ if(isset($_POST['send'])){
 
 </section>
 
-
-
-
-
-
-
-
-
-
-
-
-
 <?php include 'components/footer.php'; ?>
 
 <script src="js/script.js"></script>

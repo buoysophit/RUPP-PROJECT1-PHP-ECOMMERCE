@@ -108,7 +108,31 @@
         }
       }
     }
-  }
+    
+    @include media-breakpoint-down(sm) {
+        .navbar-search {
+            width: 100%;
+            margin: 0.5rem 0;
+        }
+        
+        .nav-item .nav-link {
+            padding: 0.5rem;
+        }
+        
+        .topbar-divider {
+            margin: auto 0.5rem;
+        }
+        
+        .dropdown {
+            position: static;
+            
+            .dropdown-menu {
+                width: 100%;
+                margin: 0;
+                right: 0;
+            }
+        }
+    }
 }
 
 .topbar.navbar-dark {
@@ -141,4 +165,5 @@
       }
     }
   }
+}
 }

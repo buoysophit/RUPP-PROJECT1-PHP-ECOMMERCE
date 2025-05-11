@@ -23,13 +23,31 @@ if (isset($_POST['order'])) {
     $check_cart->execute([$user_id]);
 
     if ($check_cart->rowCount() > 0) {
-        $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price) VALUES(?,?,?,?,?,?,?,?)");
-        $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price]);
+        if ($method === 'paypal') {
+            // Store order details in session for PayPal processing
+            $_SESSION['pending_order'] = [
+                'user_id' => $user_id,
+                'name' => $name,
+                'number' => $number,
+                'email' => $email,
+                'method' => $method,
+                'address' => $address,
+                'total_products' => $total_products,
+                'total_price' => $total_price
+            ];
+            // Redirect to PayPal processing page
+            header('location: process_paypal.php');
+            exit();
+        } else {
+            // Process other payment methods as before
+            $insert_order = $conn->prepare("INSERT INTO `orders`(user_id, name, number, email, method, address, total_products, total_price) VALUES(?,?,?,?,?,?,?,?)");
+            $insert_order->execute([$user_id, $name, $number, $email, $method, $address, $total_products, $total_price]);
 
-        $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
-        $delete_cart->execute([$user_id]);
+            $delete_cart = $conn->prepare("DELETE FROM `cart` WHERE user_id = ?");
+            $delete_cart->execute([$user_id]);
 
-        $message[] = 'order placed successfully!';
+            $message[] = 'order placed successfully!';
+        }
     } else {
         $message[] = 'your cart is empty';
     }
@@ -92,7 +110,7 @@ if (isset($_POST['order'])) {
             </div>
             <div class="inputBox">
                 <span>payment method :</span>
-                <select name="method" class="box" required>
+                <select name="method" class="box" required id="payment-method">
                     <option value="cash on delivery">cash on delivery</option>
                     <option value="credit card">credit card</option>
                     <option value="paytm">paytm</option>
@@ -131,5 +149,15 @@ if (isset($_POST['order'])) {
 <?php include 'components/footer.php'; ?>
 
 <script src="js/script.js"></script>
+<script>
+document.getElementById('payment-method').addEventListener('change', function() {
+    const submitBtn = document.querySelector('input[type="submit"]');
+    if (this.value === 'paypal') {
+        submitBtn.value = 'Proceed to PayPal';
+    } else {
+        submitBtn.value = 'place order';
+    }
+});
+</script>
 </body>
 </html>

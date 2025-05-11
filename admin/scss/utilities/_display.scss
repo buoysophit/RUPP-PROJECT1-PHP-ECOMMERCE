@@ -2,3 +2,17 @@
 .o-hidden {
   overflow: hidden !important;
 }
+
+@include media-breakpoint-down(sm) {
+    .hide-mobile {
+        display: none !important;
+    }
+    
+    .full-mobile-width {
+        width: 100% !important;
+    }
+    
+    .text-center-mobile {
+        text-align: center !important;
+    }
+}

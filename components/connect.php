@@ -7,7 +7,7 @@ if (!defined('DATABASE_CONNECT_INCLUDED')) {
         private $host = '127.0.0.1';
         private $username = 'root';
         private $password = '';
-        private $database = 'ecomp1';
+        private $database = 'nitastore';
         public $conn;
 
         public function __construct() {

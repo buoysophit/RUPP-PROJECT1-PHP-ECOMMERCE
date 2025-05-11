@@ -61,8 +61,10 @@ include 'components/wishlist_cart.php';
             <input type="hidden" name="image" value="<?= $fetch_product['image_01']; ?>">
             <button class="fas fa-heart" type="submit" name="add_to_wishlist"></button>
             <a href="quick_view.php?pid=<?= $fetch_product['id']; ?>" class="fas fa-eye"></a>
-            <img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
-            <div class="name"><?= $fetch_product['name']; ?></div>
+            <a href="product_detail.php?pid=<?= $fetch_product['id']; ?>" class="product-link">
+                <img src="uploaded_img/<?= $fetch_product['image_01']; ?>" alt="">
+                <div class="name"><?= $fetch_product['name']; ?></div>
+            </a>
             <div class="flex">
                 <div class="price"><span>$</span><?= $fetch_product['price']; ?></div>
                 <input type="number" name="qty" class="qty" min="1" max="99" onkeypress="if(this.value.length == 2) return false;" value="1">

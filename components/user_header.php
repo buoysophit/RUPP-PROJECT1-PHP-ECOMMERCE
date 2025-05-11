@@ -14,7 +14,7 @@ if(isset($message)){
 <header class="header">
 
 <section class="flex">
-        <a href="index.php" class="logo">
+        <a href="index" class="logo">
             <?php
             $select_logo = $conn->prepare("SELECT `setting_value` FROM `site_settings` WHERE `setting_key` = 'site_logo'");
             $select_logo->execute();
